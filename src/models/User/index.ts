@@ -2,11 +2,23 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class User {
   private constructor(
-    private fullName: string,
-    private email: string,
-    private phone: string,
+    private _fullName: string,
+    private _email: string,
+    private _phone: string,
     readonly id: string
   ) {}
+
+  get fullName(): string {
+    return this.fullName;
+  }
+
+  get email(): string {
+    return this.email;
+  }
+
+  get phone(): string {
+    return this.phone;
+  }
 
   static create(
     fullName: string,

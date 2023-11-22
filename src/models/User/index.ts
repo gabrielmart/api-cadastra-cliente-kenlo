@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
 
 export class User {
   private constructor(
@@ -9,22 +9,22 @@ export class User {
   ) {}
 
   get fullName(): string {
-    return this.fullName;
+    return this._fullName;
   }
 
   get email(): string {
-    return this.email;
+    return this._email;
   }
 
   get phone(): string {
-    return this.phone;
+    return this._phone;
   }
 
   static create(
     fullName: string,
     email: string,
     phone: string,
-    id: string = uuidv4()
+    id: string = crypto.randomBytes(12).toString('hex')
   ): User {
     this.validateFullName(fullName);
     this.validateEmail(email);

@@ -2,11 +2,11 @@
   "name": "api-cadastra-cliente-kenlo",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js",
-    "start:dev": "ts-node-dev src/index.ts",
+    "start": "npm run build && node build/server.js",
+    "start:dev": "ts-node-dev src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.6.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1"
   }
 }

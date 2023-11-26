@@ -22,7 +22,7 @@ jobs:
           command: npm run start
           name: Start server
       - run:
-          command: sleep 5 && curl -I localhost:5000
+          command: sleep 30 && curl -I https://api-cadastra-client-kenlo.onrender.com
           name: Verify server is running
   deploy:
     machine:

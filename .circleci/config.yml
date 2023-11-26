@@ -21,7 +21,6 @@ jobs:
       - run:
           command: npm run start
           name: Start server
-          background: true
       - run:
           command: sleep 5 && curl -I localhost:5000
           name: Verify server is running

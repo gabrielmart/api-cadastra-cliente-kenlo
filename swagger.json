@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger API Cadastra Cliente Kenlo",
+    "description": "API responsável por realizar o cadastro inicial de um possível cliente e armazena em um banco de dados noSQL",
+    "contact": {
+      "email": "gabrielmartinsdesouzaa@hotmail.com"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "https://api-cadastra-client-kenlo.onrender.com",
+      "description": "API de produção"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "API de desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Saudação da API",
+        "description": "Rota responsável enviar uma saudação como resposta",
+        "tags": [
+          "Saudação"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Cadastro do Usuário",
+        "description": "Rota responsável por cadastra um possível cliente Kenlo e armazena em um banco de dados noSQL",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"object",
+                  "$ref":"#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "Carlos Martins"
+          },
+          "email": {
+            "type": "string",
+            "example": "carlos@hotmail.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "11982511217"
+          }
+        }
+      }
+    }
+  }
+}

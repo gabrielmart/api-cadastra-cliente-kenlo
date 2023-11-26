@@ -10,7 +10,7 @@ routes.route('/').get((req, res) => {
   res.status(StatusCode.OK).json('Bem vindo a API Cadastra cliente Kenlo!');
 });
 
-routes.get('/users', validateRoutes(CreateUserSchema), (request, response) =>
+routes.post('/users', validateRoutes(CreateUserSchema), (request, response) =>
   createUserFactory().handle(request, response)
 );
 

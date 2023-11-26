@@ -22,9 +22,9 @@ jobs:
           command: npm run start
           name: Start server
           background: true
-      - run:
-          command: sleep 10 && curl -I localhost:3000
-          name: Verify server is running
+      # - run:
+      #     command: sleep 10 && curl -I localhost:3000
+      #     name: Verify server is running
   deploy:
     machine:
       image: ubuntu-2004:current

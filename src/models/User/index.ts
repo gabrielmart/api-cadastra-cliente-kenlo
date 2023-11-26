@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { BadRequestError } from '../../errors/BadRequestError';
 
 export class User {
   private constructor(
@@ -39,7 +40,7 @@ export class User {
     const fullNameIsValid = regex.test(fullName);
     if (fullNameIsValid) return fullNameIsValid;
 
-    throw new Error(
+    throw new BadRequestError(
       'Nome Inválido! \nPor gentileza informar o nome completo, possuindo no minimo 6 caracteres e no maximo 120 caracteres'
     );
   }
@@ -52,7 +53,7 @@ export class User {
     const emailIsValid = regex.test(email);
     if (emailIsValid) return emailIsValid;
 
-    throw new Error(
+    throw new BadRequestError(
       'Email Inválido! \nPor gentileza informar email com formato correto - Exemplo: email@dominio.com'
     );
   }
@@ -65,7 +66,7 @@ export class User {
     const phoneIsValid = regex.test(phone);
     if (phoneIsValid) return phoneIsValid;
 
-    throw new Error(
+    throw new BadRequestError(
       'Telefone Inválido! \nPor gentileza informar o telefone só com os numeros - Exemplo: 11982536238 ou 1182536238'
     );
   }

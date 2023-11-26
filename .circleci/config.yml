@@ -21,6 +21,7 @@ jobs:
       - run:
           command: npm run start
           name: Start server
+          background: true
       - run:
           command: sleep 30 && curl -I https://api-cadastra-client-kenlo.onrender.com
           name: Verify server is running

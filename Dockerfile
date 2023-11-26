@@ -2,9 +2,9 @@ FROM node:20 as builder
 
 WORKDIR /usr/src/app
 
-RUN npm run build
-
 COPY . .
+
+RUN npm run build
 
 FROM node:slim
 

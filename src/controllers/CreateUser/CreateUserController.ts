@@ -14,7 +14,9 @@ class CreateUserController {
       phone
     });
 
-    return response.status(StatusCodes.CREATED).json(user);
+    return response
+      .status(StatusCodes.CREATED)
+      .json({ msg: 'usuário criado', user });
   }
 }
 

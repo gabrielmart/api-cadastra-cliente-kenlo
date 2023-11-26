@@ -7,8 +7,12 @@ describe('Create User Controller', () => {
   beforeEach(async () => {
     await MongoClient.connect();
   });
+
   afterEach(async () => {
-    await MongoClient.client.db('teste').collection('users').deleteMany();
+    await MongoClient.client
+      .db(process.env.MONGODB_DATABASE_NAME)
+      .collection('users')
+      .deleteMany();
     await MongoClient.client.close();
   });
 

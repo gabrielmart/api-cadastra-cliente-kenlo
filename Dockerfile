@@ -2,7 +2,7 @@ FROM node:20 as builder
 
 WORKDIR /usr/src/app
 
-RUN npm build
+RUN npm run build
 
 COPY . .
 
@@ -15,7 +15,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm i --only=prod
+RUN npm i
 
 COPY --from=builder /usr/src/app/dist ./dist
 

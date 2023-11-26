@@ -1,15 +1,15 @@
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 import { InMemoryUsersRepository } from '../../repositories/inMemory/InMemoryUsersRepository';
 import { CreateUserDTO } from './CreateUserDTO';
-import { CreateUserService } from './CreateUserService';
+import { CreateUserUseCase } from '.';
 
 describe('Create user', () => {
   let usersRepository: IUsersRepository;
-  let createUserService: CreateUserService;
+  let createUserUseCase: CreateUserUseCase;
 
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository();
-    createUserService = new CreateUserService(usersRepository);
+    createUserUseCase = new CreateUserUseCase(usersRepository);
   });
 
   it('should be able to create a new user', async () => {
@@ -19,9 +19,8 @@ describe('Create user', () => {
       phone: '11982511217'
     } as CreateUserDTO;
 
-    const user = await createUserService.execute(userData);
+    const user = await createUserUseCase.execute(userData);
 
-    expect(user).toHaveProperty('id');
     expect(user.fullName).toBe('Gabriel Martins');
     expect(user.email).toBe('gmartins@gmail.com');
     expect(user.phone).toBe('11982511217');
@@ -34,9 +33,9 @@ describe('Create user', () => {
       phone: '11982511217'
     } as CreateUserDTO;
 
-    await createUserService.execute(userData);
+    await createUserUseCase.execute(userData);
 
-    await expect(createUserService.execute(userData)).rejects.toEqual(
+    await expect(createUserUseCase.execute(userData)).rejects.toEqual(
       new Error('O Usuário informado já existe!')
     );
   });

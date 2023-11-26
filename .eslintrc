@@ -17,5 +17,8 @@
     },
     "rules": {
         "prettier/prettier": 2 // Means error
+    },
+    "parserOptions": {
+        "warnOnUnsupportedTypeScriptVersion": false
     }
 }

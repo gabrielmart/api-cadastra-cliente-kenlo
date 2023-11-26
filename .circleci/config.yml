@@ -23,7 +23,7 @@ jobs:
           name: Start server
           background: true
       - run:
-          command: sleep 30 && curl -I https://api-cadastra-client-kenlo.onrender.com
+          command: sleep 10 && curl -I localhost:3000
           name: Verify server is running
   deploy:
     machine:

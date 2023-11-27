@@ -18,7 +18,9 @@ describe('Create User Controller', () => {
 
   afterAll(async () => {
     await MongoClient.connect();
-    await MongoClient.client.db('teste').dropDatabase();
+    await MongoClient.client
+      .db(process.env.MONGODB_DATABASE_NAME)
+      .dropDatabase();
     await MongoClient.client.close();
   });
 
